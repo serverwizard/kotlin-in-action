@@ -1,14 +1,17 @@
 package chapter2
 
+import java.util.Random
+
 class Rectangle(val height: Int, val width: Int) {
     val isSquare: Boolean // 커스텀 접근자
         get() = height == width
 }
 
-fun main(args: Array<String>) {
-    val rectangle = Rectangle(1, 3)
-    val square = Rectangle(2, 2)
+fun createRandomRectangle(): Rectangle {
+    val random = Random()
+    return Rectangle(random.nextInt(), random.nextInt())
+}
 
-    println(rectangle.isSquare)
-    println(square.isSquare)
+fun main(args: Array<String>) {
+    println(createRandomRectangle().isSquare)
 }
