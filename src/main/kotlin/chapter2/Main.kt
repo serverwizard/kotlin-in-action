@@ -1,24 +1,14 @@
 package chapter2
 
-interface Expr
-class Num(val value: Int) : Expr
-class Sum(val left: Expr, val right: Expr) : Expr
-
-fun evalWithLogging(e: Expr): Int =
-    when (e) {
-        is Num -> {
-            println("num: ${e.value}")
-            e.value
-        }
-        is Sum -> {
-            val left = evalWithLogging(e.left)
-            val right = evalWithLogging(e.right)
-            println("num: $left + $right")
-            left + right
-        }
-        else -> throw IllegalArgumentException("Unknown expression")
-    }
+fun fizzBuzz(i: Int) = when {
+    i % 15 == 0 -> "FizzBuzz"
+    i % 3 == 0 -> "Fizz"
+    i % 5 == 0 -> "Buzz"
+    else -> "$i "
+}
 
 fun main(args: Array<String>) {
-    println(evalWithLogging(Sum(Sum(Num(1), Num(2)), Num(4))))
+    for (i in 1..10) {
+        print(fizzBuzz(i))
+    }
 }
