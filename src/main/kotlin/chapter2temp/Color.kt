@@ -1,4 +1,4 @@
-package chapter2
+package chapter2temp
 
 enum class Color(
     val r: Int,
