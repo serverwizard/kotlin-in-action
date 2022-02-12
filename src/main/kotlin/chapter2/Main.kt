@@ -1,17 +1,16 @@
 package chapter2
 
-import java.util.Random
-
-class Rectangle(val height: Int, val width: Int) {
-    val isSquare: Boolean // 커스텀 접근자
-        get() = height == width
-}
-
-fun createRandomRectangle(): Rectangle {
-    val random = Random()
-    return Rectangle(random.nextInt(), random.nextInt())
-}
+fun getMnemonic(color: Color) =
+    when (color) {
+        Color.RED -> "Richard"
+        Color.ORANGE -> "Of"
+        Color.YELLOW -> "York"
+        Color.GREEN -> "Gave"
+        Color.BLUE -> "Battle"
+        Color.INDIGO -> "In"
+        Color.VIOLET -> "Vain"
+    }
 
 fun main(args: Array<String>) {
-    println(createRandomRectangle().isSquare)
+    println(getMnemonic(Color.BLUE))
 }
