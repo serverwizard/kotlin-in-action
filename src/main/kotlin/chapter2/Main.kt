@@ -1,11 +1,20 @@
 package chapter2
 
-fun recognize(c: Char) = when (c) {
-    in '0'..'9' -> "It's a digit"
-    in 'a'..'z', in 'A'..'Z' -> "It's a letter"
-    else -> "I don't know"
+import java.io.BufferedReader
+import java.io.StringReader
+
+fun readNumber(reader: BufferedReader): Int? {
+    try {
+        val line = reader.readLine()
+        return Integer.parseInt(line)
+    } catch (e: NumberFormatException) {
+        return null
+    } finally {
+        reader.close()
+    }
 }
 
 fun main(args: Array<String>) {
-    println(recognize('8'))
+    var reader = BufferedReader(StringReader("239"))
+    println(readNumber(reader))
 }
