@@ -1,6 +1,12 @@
 package chapter2
 
+class Person(
+    val name: String,
+    var isMarried: Boolean
+)
+
 fun main(args: Array<String>) {
-    val name = if (args.size > 0) args[0] else "Kotlin"
-    println("Hello, $name")
+    val person = Person("Bob", true)
+    println(person.name)
+    print(person.isMarried)
 }
