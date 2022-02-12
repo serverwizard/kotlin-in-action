@@ -1,28 +1,19 @@
 package chapter2
 
-import chapter2temp.Color
-import chapter2temp.Color.BLUE
-import chapter2temp.Color.GREEN
-import chapter2temp.Color.INDIGO
-import chapter2temp.Color.ORANGE
-import chapter2temp.Color.RED
-import chapter2temp.Color.VIOLET
-import chapter2temp.Color.YELLOW
+interface Expr
+class Num(val value: Int) : Expr
+class Sum(val left: Expr, val right: Expr) : Expr
 
-fun mixOptimized(c1: Color, c2: Color) =
-    when {
-        (c1 == RED && c2 == YELLOW) ||
-            (c2 == YELLOW && c2 == RED) -> ORANGE
-
-        (c1 == YELLOW && c2 == BLUE) ||
-            (c1 == BLUE && c2 == YELLOW) -> GREEN
-
-        (c1 == BLUE && c2 == VIOLET) ||
-            (c1 == VIOLET && c2 == BLUE) -> INDIGO
-
-        else -> throw Exception("Dirty Color")
+fun eval(e: Expr): Int {
+    if (e is Num) {
+        return e.value
     }
+    if (e is Sum) {
+        return eval(e.left) + eval(e.right)
+    }
+    throw IllegalArgumentException("Unknown expression")
+}
 
 fun main(args: Array<String>) {
-    println(mixOptimized(BLUE, YELLOW))
+    println(eval(Sum(Sum(Num(1), Num(2)), Num(4))))
 }
