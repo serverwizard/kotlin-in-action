@@ -7,7 +7,7 @@ fun readNumber(reader: BufferedReader) {
     val number = try {
         Integer.parseInt(reader.readLine())
     } catch (e: NumberFormatException) {
-        return
+        null
     }
     println(number) // kotlin.Unit
 }
