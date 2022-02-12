@@ -1,15 +1,14 @@
 package chapter2
 
-class Person(
-    val name: String,
-    var isMarried: Boolean
-)
+class Rectangle(val height: Int, val width: Int) {
+    val isSquare: Boolean // 커스텀 접근자
+        get() = height == width
+}
 
 fun main(args: Array<String>) {
-    val person = Person("Bob", true)
-//    person.name = "Sam" // 컴파일 오류
-    println(person.name)
+    val rectangle = Rectangle(1, 3)
+    val square = Rectangle(2, 2)
 
-    person.isMarried = false
-    print(person.isMarried)
+    println(rectangle.isSquare)
+    println(square.isSquare)
 }
